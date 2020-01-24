@@ -1,0 +1,10 @@
+.DS_Store
+.idea
+
+venv
+*.pyc
+*.pyo
+
+/static/
+/media/
+cache_store/
