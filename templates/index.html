@@ -1,0 +1,39 @@
+{% load bootstrap4 %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Index</title>
+    {% bootstrap_css %}
+</head>
+<body>
+    <div class="container">
+        Qual sala de chat vc gostaria de entrar?<br>
+        <input id="nome_sala" name="nome_sala" type="text" size="100" placeholder="Nome da sala..."/><br>
+        {% buttons %}
+            <input id="button" class="btn btn-primary" type="button" value="Entrar"/>
+        {% endbuttons %}
+    </div>
+    <script type="application/javascript">
+        document.querySelector('#nome_sala').focus();
+        document.querySelector('#nome_sala').onkeyup = function(e){
+            if(e.keyCode === 13){
+                document.querySelector('#button').click();
+            }
+        };
+
+        document.querySelector('#button').onclick = function (e) {
+            var nome_sala = document.querySelector('#nome_sala').value;
+            if (nome_sala !== ''){
+                window.location.pathname = '/chat/' + nome_sala + '/';
+            }
+            else {
+                alert('Preencha sala');
+                document.querySelector('#nome_sala').focus();
+            }
+        };
+    </script>
+{% bootstrap_javascript jquery='full' %}
+</body>
+</html>
